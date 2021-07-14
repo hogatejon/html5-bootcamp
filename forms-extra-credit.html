@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Extra Credit</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Type of User</legend>
+            <p>What type of user are you?</p>
+            <input id="customer" type="radio" name="userType" value="customer">
+            <label for="customer">Customer</label>
+            <input id="employeeContractor" type="radio" name="userType" value='employeeContractor'>
+            <label for="employeeContractor">Employee/Contractor</label>
+            <input id="federalEmployeeContractor" type="radio" name="userType" value='federalEmployeeContractor'>
+            <label for="federalEmployeeContractor">Federal Employee/Contractor</label>
+        </fieldset>
+        <fieldset>
+            <legend>Email</legend>
+            <label for="personalEmail">Personal Email</label>
+            <input type="email" id="personalEmail">
+            <label for="businessEmail">Business Email</label>
+            <input type="email" id="businessEmail">
+        </fieldset>
+        <fieldset>
+            <legend>Password</legend>
+            <label for="password">Password</label>
+            <input type="password" id="password">
+        </fieldset>
+        <fieldset>
+            <legend>Use Case</legend>
+            <label for="useCase">I'm Interested In: </label>
+            <input type="text" id="useCase" list='uses'>
+            <datalist id=uses>
+                <option value="Personal">Personal</option>
+                <option value="Profesional">Profesional</option>
+            </datalist>
+        </fieldset>
+        <fieldset>
+            <legend>Age Verification</legend>
+            <label for="age">I am over 18 years of age.</label>
+            <input type="checkbox" id="age">
+        </fieldset>
+    </form>
+</body>
+</html>
