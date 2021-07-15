@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Register Your Food Plate Diary - starter</title>
+<link href="localStorage.css" rel="stylesheet" type="text/css">
+<script>
+  function saveData() {
+    if (window.localStorage) {
+      let isAdult;
+      let selectedGender = getIdOfChecked(document.getElementsByName('sex'));
+      let selectedAge = getIdOfChecked(document.getElementsByName('ageGroup'));
+
+      if (selectedAge === 'ageGroupA') {
+        isAdult = true;
+      } else {
+        isAdult = false;
+      }
+      console.log(selectedAge);
+      
+
+      let user = {
+        "firstName": document.getElementById('firstName').value,
+        "gender": selectedGender,
+        "age": selectedAge,
+        "ageGroup": isAdult ? document.getElementById('adultAgeGroup').value : document.getElementById('childAgeGroup').value
+      }
+
+      window.localStorage.setItem('user', JSON.stringify(user));
+    } else {
+      console.log('nope');
+    }
+  }
+
+  function getIdOfChecked(elements) {
+    let id = '';
+    console.log(elements);
+    elements.forEach((element) => {
+        if (element.checked) {
+          id = element.id;
+        }
+      });
+      return id;
+  }
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+  <header id="welcomeHeader"> <img id="foodPlateImg" src="images/MyFoodPlate_logo.png" /> </header>
+  <section id="mainContent">
+    <form id="registerFrm">
+      <label for="firstName" class="block">First Name:</label>
+      <input type="text" name="firstName" id="firstName" autofocus required>
+      <section>
+      <input type="radio" name="sex" id="sexF" value="F">
+      <label for="sexF">Female</label>
+
+      <input type="radio" name="sex" id="sexM" value="M">
+      <label for="sexM">Male</label>
+      </section>
+      <input type="radio" name="ageGroup" id="ageGroupC" value="C">
+      <label for="ageGroupC">Child</label>
+
+      <input type="radio" name="ageGroup" id="ageGroupA" value="A">
+      <label for="ageGroupA">Adult</label>
+
+      <div id="adultAgeGroups" style="display:none; top:8px;">
+        <select name="adultAgeGroup" id="adultAgeGroup" size="1">
+          <option value="" selected>Select your Age Group</option>
+          <option value="19-30">19-30</option>
+          <option value="31-50">31-50</option>
+          <option value="51+">51+</option>
+        </select>
+      </div>
+      <div id="childAgeGroups" style="display:none; top:8px">
+        <select name="childAgeGroup" id="childAgeGroup" size="1">
+          <option value="" selected>Select your Age Group</option>
+          <option value="2-30">2-3</option>
+          <option value="4-8">4-8</option>
+          <option value="9-13">9-13</option>
+          <option value="14-18">14-18</option>
+        </select>
+      </div>
+
+      <input type="submit" name="submit" id="submit" value="Submit" onclick=saveData()>
+
+
+    </form>
+  </section>
+</div>
+<script>
+document.getElementById('ageGroupA').addEventListener('click', function() {
+        document.getElementById('adultAgeGroups').style.display = "block";
+        document.getElementById('childAgeGroups').style.display = "none";
+      });
+document.getElementById('ageGroupC').addEventListener('click', function() {
+              console.log('yo');
+              document.getElementById('childAgeGroups').style.display = "block";
+              document.getElementById('adultAgeGroups').style.display = "none";
+      });
+</script>
+</body>
+</html>
